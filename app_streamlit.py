@@ -68,4 +68,4 @@ if st.button('Перевести'):
         translations.append(translated)
 
     res = dict(source=sources, translation=translations)
-    st.text(res)
+    st.text(translations[0])
