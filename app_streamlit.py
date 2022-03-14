@@ -1,11 +1,8 @@
-import logging
 import os
 import sys
 import platform
 import streamlit as st
-from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
-import numpy as np
 import rtg
 import torch
 
@@ -38,7 +35,6 @@ else:
 log.info(f"System Info: ${sys_info}")
 
 exp, src_prep, tgt_postp = None, None, None
-# global exp, src_prep, tgt_postp
 exp = Experiment(f'{root}/rtg500eng-tfm9L6L768d-bsz720k-stp200k-ens05', read_only=True)
 dec_args = exp.config.get("decoder") or exp.config["tester"].get("decoder", {})
 decoder = Decoder.new(exp, ensemble=dec_args.pop("ensemble", 1))
@@ -63,4 +59,4 @@ if st.button('Перевести'):
         translations.append(translated)
 
     res = dict(source=sources, translation=translations)
-    st.text(translations[0])
+    st.write(translations[0])
