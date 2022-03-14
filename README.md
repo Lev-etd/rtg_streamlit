@@ -1,34 +1,26 @@
-# Reader-Translator-Generator (RTG)  
-[![image](http://img.shields.io/pypi/v/rtg.svg)](https://pypi.python.org/pypi/rtg/)
+# Reader-Translator-Generator (RTG)  (Streamlit Version)
 
+### Что может делать данное приложение?
 
-Reader-Translator-Generator (RTG) is a Neural Machine Translation toolkit based on pytorch. 
+Перевод с любого языка мира (более 500) на английский.
 
-Documentation: https://isi-nlp.github.io/rtg/
-> for editing/improving docs go to [docs/](docs/index.adoc) directory.
+### Как установить? 
 
----------
+Открыть командную строку и ввести следующий код: 
+```
+git clone https://github.com/Lev-etd/rtg_streamlit.git
+cd rtg_streamlit/
+bash setup.sh
+streamlit run app_streamlit.py --server.address 0.0.0.0 --server.port 8080
+```
+### Системные требования
+Оперативная память: 7 гб  
+Память на жёстком диске: 2 гб
 
-### Questions or Issues 
+При первом запуске будет скачан файл на 1.5 гб, поэтому первый запуск приложения будет происходить дотаточно долго.
 
-Please use github issues to ask a question or report an issue :
-1. https://github.com/isi-nlp/rtg/issues   (public/ external repo)
-2. https://github.com/isi-nlp/rtg-in/issues (an internal fork, for ISI NLP)
+#### Для пользователей Windows. 
+##### Для установки WSL (программы для выполнения Linux команд на Windows) 
 
-
-### ACKNOWLEDGEMENTS
-
-* The research is based upon work supported by the Office of the Director of
-National Intelligence (ODNI), Intelligence Advanced Research Projects
-Activity (IARPA), via AFRL Contract #FA8650-17-C-9116.
-The views and conclusions contained herein are those of the authors and
-should not be interpreted as necessarily representing the official policies or
-endorsements, either expressed or implied, of the ODNI, IARPA, or the
-U.S. Government. The U.S. Government is authorized to reproduce and
-distribute reprints for Governmental purposes notwithstanding any
-copyright annotation thereon.
-
-* This material is based on research sponsored by
- Air Force Research Laboratory (AFRL) under agreement number FA8750-19-1-1000.
-The U.S. Government is authorized to reproduce and distribute reprints for
-Government purposes notwithstanding any copyright notation therein.
+Пройдите в Настройки > Обновление и безопасность > Для Разработчиков. Отметьте галочкой "Режим разработчика". Найдите “Windows Features”, выберите “Включить/Выключить Windows features”.
+В списке найдите WSL, отметьте галочкой, и установите его. После установки перезагрузите ПК. Откройте Command Prompt или PowerShell и введите команлы выше.
