@@ -9,9 +9,6 @@ import numpy as np
 import rtg
 import torch
 
-import flask
-from flask import Flask, request, send_from_directory, Blueprint
-
 from rtg import TranslationExperiment as Experiment, log
 from rtg.module.decoder import Decoder
 from rtg.utils import max_RSS
@@ -20,9 +17,7 @@ torch.set_grad_enabled(False)
 FLOAT_POINTS = 4
 
 root = os.getcwd()
-# exp = None
-# app = Flask(__name__)
-# app.config['JSON_AS_ASCII'] = False
+
 
 sys_info = {
     'RTG Version': rtg.__version__,
