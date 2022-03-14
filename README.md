@@ -9,6 +9,7 @@
 Открыть командную строку и ввести следующий код: 
 ```
 git clone https://github.com/Lev-etd/rtg_streamlit.git
+cd rtg_streamlit/
 bash setup.sh
 streamlit run app_streamlit.py --server.address 0.0.0.0 --server.port 8080
 ```
