@@ -1,4 +1,3 @@
-git clone https://github.com/Lev-etd/rtg_streamlit.git
 cd rtg_streamlit/
 apt install wget
 pip install flask
