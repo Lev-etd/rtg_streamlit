@@ -1,4 +1,3 @@
-cd rtg_streamlit/
 apt install wget
 pip install flask
 pip install rtg==0.6.1
