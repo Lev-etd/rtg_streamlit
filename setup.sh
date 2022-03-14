@@ -1,6 +1,3 @@
-apt update 
-apt upgrade
-apt install git
 git clone https://github.com/Lev-etd/rtg_streamlit.git
 apt install wget
 pip install flask
@@ -10,4 +7,3 @@ cd rtg_streamlit/
 wget http://rtg.isi.edu/many-eng/models/rtg500eng-tfm9L6L768d-bsz720k-stp200k-ens05.tgz
 tar xvf rtg500eng-tfm9L6L768d-bsz720k-stp200k-ens05.tgz
 cp conf.yml -fr rtg500eng-tfm9L6L768d-bsz720k-stp200k-ens05/conf.yml
-streamlit run app_streamlit.py --server.address 0.0.0.0 --server.port 8080
