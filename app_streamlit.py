@@ -42,12 +42,12 @@ else:
 log.info(f"System Info: ${sys_info}")
 
 exp, src_prep, tgt_postp = None, None, None
-# exp = Experiment(f'{root}/rtg500eng-tfm9L6L768d-bsz720k-stp200k-ens05', read_only=True)
-# dec_args = exp.config.get("decoder") or exp.config["tester"].get("decoder", {})
-# decoder = Decoder.new(exp, ensemble=dec_args.pop("ensemble", 1))
-# src_prep = exp.get_pre_transform(side='src')
-# tgt_prep = exp.get_pre_transform(side='tgt')
-# tgt_postp = exp.get_post_transform(side='tgt')
+exp = Experiment(f'{root}/rtg500eng-tfm9L6L768d-bsz720k-stp200k-ens05', read_only=True)
+dec_args = exp.config.get("decoder") or exp.config["tester"].get("decoder", {})
+decoder = Decoder.new(exp, ensemble=dec_args.pop("ensemble", 1))
+src_prep = exp.get_pre_transform(side='src')
+tgt_prep = exp.get_pre_transform(side='tgt')
+tgt_postp = exp.get_post_transform(side='tgt')
 list_of_languages = pd.read_csv('list_of_available_languages')
 metrics = pd.read_csv('metrics', index_col='Unnamed: 0')
 
@@ -63,13 +63,13 @@ if st.button('Перевести'):
         st.text("Введите запрос")
     sources = [src_prep(sent) for sent in sources]
     translations = []
-    # for source in sources:
-    #     translated = decoder.decode_sentence(source, **dec_args)[0][1]
-    #     translated = tgt_postp(translated)
-    #     translations.append(translated)
-    #
-    # res = dict(source=sources, translation=translations)
-    # st.write(translations[0])
+    for source in sources:
+        translated = decoder.decode_sentence(source, **dec_args)[0][1]
+        translated = tgt_postp(translated)
+        translations.append(translated)
+
+    res = dict(source=sources, translation=translations)
+    st.write(translations[0])
 
 # with st.expander("Статистика по набору данных, использованному в обучении модели"):
 AgGrid(list_of_languages)
@@ -90,10 +90,9 @@ with col2:
     ax = fig.subplots()
     sns.barplot(x=metrics.index, y=metrics['SME-ENG'], ax=ax)
     ax.set_title('Качество обучения на паре языков  Northern Sami-English ')
-    # ax.set_xlabel()
     ax.set_ylabel('BLEU score')
     fig.tight_layout()
     buf_1 = BytesIO()
     fig.savefig(buf_1, format="png")
     st.image(buf_1)
-# st.write(fig)
+
