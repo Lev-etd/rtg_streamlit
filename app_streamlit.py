@@ -71,6 +71,7 @@ if st.button('Перевести'):
     res = dict(source=sources, translation=translations)
     st.write(translations[0])
 
+
 # with st.expander("Статистика по набору данных, использованному в обучении модели"):
 AgGrid(list_of_languages)
 
