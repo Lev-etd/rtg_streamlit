@@ -67,12 +67,10 @@ if st.button('Перевести'):
         translated = decoder.decode_sentence(source, **dec_args)[0][1]
         translated = tgt_postp(translated)
         translations.append(translated)
+        res = dict(source=sources, translation=translations)
+    with st.empty():
+        st.write(translations[0])
 
-    res = dict(source=sources, translation=translations)
-    st.write(translations[0])
-
-
-# with st.expander("Статистика по набору данных, использованному в обучении модели"):
 AgGrid(list_of_languages)
 
 col1, col2 = st.columns(2)
